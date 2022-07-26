@@ -25,10 +25,6 @@ public class HomeWorkTest {
         int answerThirdOptionForQuestionThree = 33;
         int answerFourthOptionForQuestionThree = 43;
 
-        int correctAnswerForQuestionOne = answerFifthOptionForQuestionOne;
-        int correctAnswerForQuestionTwo = answerSecondOptionForQuestionTwo;
-        int correctAnswerForQuestionThree = answerFirstOptionForQuestionThree;
-
         String[] questions = {questionOne};
 
         String[] newQuestions = new String[questions.length + 2];
@@ -40,18 +36,18 @@ public class HomeWorkTest {
 
         questions = newQuestions;
 
-        Integer[][][] answerOptionsAndCorrectAnswers = {
+        int[][][] answerOptionsAndCorrectAnswers = {
                 {
                         {answerFirstOptionForQuestionOne, answerSecondOptionForQuestionOne, answerThirdOptionForQuestionOne, answerFourthOptionForQuestionOne, answerFifthOptionForQuestionOne},
-                        {correctAnswerForQuestionOne}
+                        {answerFifthOptionForQuestionOne}
                 },
                 {
                         {answerFirstOptionForQuestionTwo, answerSecondOptionForQuestionTwo, answerThirdOptionForQuestionTwo},
-                        {correctAnswerForQuestionTwo}
+                        {answerSecondOptionForQuestionTwo}
                 },
                 {
                         {answerFirstOptionForQuestionThree, answerSecondOptionForQuestionThree, answerThirdOptionForQuestionThree, answerFourthOptionForQuestionThree},
-                        {correctAnswerForQuestionThree}
+                        {answerFirstOptionForQuestionThree}
                 }
         };
 
@@ -70,9 +66,9 @@ public class HomeWorkTest {
 
                 if (answerOption < (answerOptionsAndCorrectAnswers[i][0].length) && answerOption >= 0) {
 
-                    Integer correctAnswer = answerOptionsAndCorrectAnswers[i][1][0];
+                    int correctAnswer = answerOptionsAndCorrectAnswers[i][1][0];
 
-                    if (answerOptionsAndCorrectAnswers[i][0][answerOption].equals(correctAnswer)) {
+                    if (answerOptionsAndCorrectAnswers[i][0][answerOption] == correctAnswer) {
                         System.out.println("Великолепно! Это правильный ответ");
                         correctCount++;
                     } else {
