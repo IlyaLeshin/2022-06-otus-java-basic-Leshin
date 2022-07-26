@@ -6,53 +6,61 @@ public class HomeWorkTest {
     public static void main(String[] args) {
         int correctCount = 0, wrongCount = 0;
 
-        String questionOne = "Выберете правильный номер варианта ответа (А5Q1 is correct)";
-        String questionTwo = "Выберете правильный номер варианта ответа (А2Q2 is correct) ?";
-        String questionThree = "Выберете правильный номер варианта ответа (А1Q3 is correct) ?";
+        String questionOne = "Выберете правильный номер варианта ответа (51 is correct)";
+        String questionTwo = "Выберете правильный номер варианта ответа (22 is correct)";
+        String questionThree = "Выберете правильный номер варианта ответа (13 is correct)";
 
-        String answerFirstOptionForQuestionOne = "А1Q1";
-        String answerSecondOptionForQuestionOne = "А2Q1";
-        String answerThirdOptionForQuestionOne = "А3Q1";
-        String answerFourthOptionForQuestionOne = "А4Q1";
-        String answerFifthOptionForQuestionOne = "А5Q1";
+        int answerFirstOptionForQuestionOne = 11;
+        int answerSecondOptionForQuestionOne = 21;
+        int answerThirdOptionForQuestionOne = 31;
+        int answerFourthOptionForQuestionOne = 41;
+        int answerFifthOptionForQuestionOne = 51;
 
-        String answerFirstOptionForQuestionTwo = "А1Q2";
-        String answerSecondOptionForQuestionTwo = "А2Q2";
-        String answerThirdOptionForQuestionTwo = "А3Q2";
+        int answerFirstOptionForQuestionTwo = 12;
+        int answerSecondOptionForQuestionTwo = 22;
+        int answerThirdOptionForQuestionTwo = 32;
 
-        String answerFirstOptionForQuestionThree = "А1Q3";
-        String answerSecondOptionForQuestionThree = "А2Q3";
-        String answerThirdOptionForQuestionThree = "А3Q3";
-        String answerFourthOptionForQuestionThree = "А4Q3";
+        int answerFirstOptionForQuestionThree = 13;
+        int answerSecondOptionForQuestionThree = 23;
+        int answerThirdOptionForQuestionThree = 33;
+        int answerFourthOptionForQuestionThree = 43;
 
-        String correctAnswerForQuestionOne = answerFifthOptionForQuestionOne;
-        String correctAnswerForQuestionTwo = answerSecondOptionForQuestionTwo;
-        String correctAnswerForQuestionThree = answerFirstOptionForQuestionThree;
+        int correctAnswerForQuestionOne = answerFifthOptionForQuestionOne;
+        int correctAnswerForQuestionTwo = answerSecondOptionForQuestionTwo;
+        int correctAnswerForQuestionThree = answerFirstOptionForQuestionThree;
 
-        String[][][] questionsAndAnswerOptionsAndCorrectAnswers = {
+        String[] questions = {questionOne};
+
+        String[] newQuestions = new String[questions.length + 2];
+        for (int i = 0; i < questions.length; i++) {
+            newQuestions[i] = questions[i];
+        }
+        newQuestions[questions.length] = questionTwo;
+        newQuestions[questions.length + 1] = questionThree;
+
+        questions = newQuestions;
+
+        Integer[][][] answerOptionsAndCorrectAnswers = {
                 {
-                        {questionOne},
                         {answerFirstOptionForQuestionOne, answerSecondOptionForQuestionOne, answerThirdOptionForQuestionOne, answerFourthOptionForQuestionOne, answerFifthOptionForQuestionOne},
                         {correctAnswerForQuestionOne}
                 },
                 {
-                        {questionTwo},
                         {answerFirstOptionForQuestionTwo, answerSecondOptionForQuestionTwo, answerThirdOptionForQuestionTwo},
                         {correctAnswerForQuestionTwo}
                 },
                 {
-                        {questionThree},
                         {answerFirstOptionForQuestionThree, answerSecondOptionForQuestionThree, answerThirdOptionForQuestionThree, answerFourthOptionForQuestionThree},
                         {correctAnswerForQuestionThree}
                 }
         };
 
-        for (int i = 0; i < questionsAndAnswerOptionsAndCorrectAnswers.length; i++) {
-            String question = questionsAndAnswerOptionsAndCorrectAnswers[i][0][0];
+        for (int i = 0; i < questions.length; i++) {
+            String question = questions[i];
             System.out.println("(" + (i + 1) + ")" + question);
 
-            for (int j = 0; j < questionsAndAnswerOptionsAndCorrectAnswers[i][1].length; j++) {
-                System.out.println((j + 1) + ".вариант:	" + questionsAndAnswerOptionsAndCorrectAnswers[i][1][j]);
+            for (int j = 0; j < answerOptionsAndCorrectAnswers[i][0].length; j++) {
+                System.out.println((j + 1) + ".вариант:	" + answerOptionsAndCorrectAnswers[i][0][j]);
             }
             System.out.print("Ваш ответ: №");
 
@@ -60,11 +68,11 @@ public class HomeWorkTest {
             while (true) {
                 int answerOption = scanner.nextInt() - 1;
 
-                if (answerOption < (questionsAndAnswerOptionsAndCorrectAnswers[i][1].length) && answerOption >= 0) {
+                if (answerOption < (answerOptionsAndCorrectAnswers[i][0].length) && answerOption >= 0) {
 
-                    String correctAnswer = questionsAndAnswerOptionsAndCorrectAnswers[i][2][0];
+                    Integer correctAnswer = answerOptionsAndCorrectAnswers[i][1][0];
 
-                    if (questionsAndAnswerOptionsAndCorrectAnswers[i][1][answerOption].equals(correctAnswer)) {
+                    if (answerOptionsAndCorrectAnswers[i][0][answerOption].equals(correctAnswer)) {
                         System.out.println("Великолепно! Это правильный ответ");
                         correctCount++;
                     } else {
