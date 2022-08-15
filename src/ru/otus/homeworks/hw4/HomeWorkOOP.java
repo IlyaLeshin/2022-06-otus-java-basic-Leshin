@@ -29,9 +29,10 @@ public class HomeWorkOOP {
         questionsArr.add(questionThree);
 
         for (int i = 0; i < questionsArr.size(); i++) {
-            System.out.println("Вопрос №"+(i+1)+": "+questionsArr.get(i).getQuestion());
-            for (int j = 0; j < questionsArr.get(i).getAnswerOptions().length; j++) {
-                System.out.println("Вариант ответа №" + (j + 1) + ": " + questionsArr.get(i).getAnswerOptions()[j]);
+            QuestionAndAnswersOptionsAndCorrectAnswer tempCurrentQuestion = questionsArr.get(i);
+            System.out.println("Вопрос №"+(i+1)+": "+tempCurrentQuestion.getQuestion());
+            for (int j = 0; j < tempCurrentQuestion.getAnswerOptions().length; j++) {
+                System.out.println("Вариант ответа №" + (j + 1) + ": " + tempCurrentQuestion.getAnswerOptions()[j]);
             }
 
             System.out.print("Ваш ответ: №");
@@ -39,12 +40,12 @@ public class HomeWorkOOP {
 
             while (true) {
                 Integer answerOption = scanner.nextInt();
-                if (answerOption <= (questionsArr.get(i).lengthAnswerOptions()) && answerOption > 0) {
-                    if (answerOption.equals(questionsArr.get(i).getNumCorrectAnswer())) {
+                if (answerOption <= (tempCurrentQuestion.lengthAnswerOptions()) && answerOption > 0) {
+                    if (answerOption.equals(tempCurrentQuestion.getNumCorrectAnswer())) {
                         System.out.println("Великолепно! Это правильный ответ");
                         correctCount.plusCount();
                     } else {
-                        System.out.println("Неверно! Правильный ответ: " + questionsArr.get(i).getNumCorrectAnswer());
+                        System.out.println("Неверно! Правильный ответ: " + tempCurrentQuestion.getNumCorrectAnswer());
                         wrongCount.plusCount();
                     }
                     break;
