@@ -16,9 +16,9 @@ public class HomeWorkClientBank {
         ClientAccount<Client, Account> clientAccounts = new ClientAccount<>();
         Bank.addClientAccounts(clients, accounts, clientAccounts);
         clientAccounts.print();
-              System.out.println("----------------------------------");
+        System.out.println("----------------------------------");
 
-        System.out.println("Вывод счетов клиента "+ clients.get(3));
+        System.out.println("Вывод счетов клиента " + clients.get(3));
         System.out.println(Bank.getAccountsOfClient(clientAccounts, clients.get(3)));
         System.out.println("----------------------------------");
 
