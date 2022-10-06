@@ -20,8 +20,6 @@ public class GameTest01 {
             Player playerTwo = new PlayerMock("player2");
             game.playGame(playerOne, playerTwo);
             Assertions.assertRightChooseWinner(playerTwo,winnerPrinter.getWinner());
-            game.playGame(playerTwo, playerOne);
-            Assertions.assertRightChooseWinner(playerTwo,winnerPrinter.getWinner());
 
             System.out.printf("\"%s\" passed %n", scenario);
         } catch (Throwable e) {
