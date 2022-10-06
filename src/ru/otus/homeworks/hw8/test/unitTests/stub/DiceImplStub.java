@@ -1,4 +1,4 @@
-package ru.otus.homeworks.hw8.tests.stub;
+package ru.otus.homeworks.hw8.test.unitTests.stub;
 
 import ru.otus.homeworks.hw8.game.Dice;
 
@@ -8,6 +8,5 @@ public class DiceImplStub implements Dice {
     public int roll() {
 
         return 1;
-
     }
 }

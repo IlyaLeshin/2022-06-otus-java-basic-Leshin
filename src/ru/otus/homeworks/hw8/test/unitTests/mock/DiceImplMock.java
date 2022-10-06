@@ -1,4 +1,4 @@
-package ru.otus.homeworks.hw8.tests.mock;
+package ru.otus.homeworks.hw8.test.unitTests.mock;
 
 import ru.otus.homeworks.hw8.game.Dice;
 
