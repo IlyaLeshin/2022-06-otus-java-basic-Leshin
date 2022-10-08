@@ -22,7 +22,7 @@ public class GameTest01 {
             Assertions.assertRightChooseWinner(playerTwo,winnerPrinter.getWinner());
 
             System.out.printf("\"%s\" passed %n", scenario);
-        } catch (Throwable e) {
+        } catch (AssertionError e) {
             System.err.printf("\"%s\" fails with message \"%s\" %n", scenario, e.getMessage());
         }
     }
