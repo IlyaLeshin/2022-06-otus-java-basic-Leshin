@@ -5,8 +5,8 @@ import ru.otus.homeworks.hw8.game.DiceImpl;
 import ru.otus.homeworks.hw8.test.assertions.Assertions;
 
 public class DiceImplTest02 {
-    public static void NotNegative() {
-        String scenario = "DiceImplTest02.NotNegative Тест провеки значения граней кубика больше нуля";
+    public static void notNegative() {
+        String scenario = "DiceImplTest02.notNegative Тест провеки значения граней кубика больше нуля";
         try {
             Dice actual = new DiceImpl();
             for (int i = 1; i < 10; i++) {
@@ -14,8 +14,7 @@ public class DiceImplTest02 {
             }
 
             System.out.printf("\"%s\" passed %n", scenario);
-        } catch (
-                Throwable e) {
+        } catch (AssertionError e) {
             System.err.printf("\"%s\" fails with message \"%s\" %n", scenario, e.getMessage());
         }
     }
