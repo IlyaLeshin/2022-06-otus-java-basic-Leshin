@@ -1,3 +1,5 @@
+CREATE DATABASE Homework_sql;
+
 CREATE TABLE question (
     question_id SERIAL PRIMARY KEY,
     question varchar(300)
