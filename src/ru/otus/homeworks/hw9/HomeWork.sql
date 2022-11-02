@@ -6,14 +6,14 @@ CREATE TABLE question (
 );
 
 CREATE TABLE answerOption(
-    answerOption_id float PRIMARY KEY,
+    answerOption_id varchar(10) PRIMARY KEY,
     answerOption varchar(300) NOT NULL,
     question_id INT REFERENCES question(question_id)
 );
 
 CREATE TABLE rightAnswer(
     question_id INT REFERENCES question(question_id),
-    answerOption_id float REFERENCES answerOption(answerOption_id)
+    answerOption_id varchar(10) REFERENCES answerOption(answerOption_id)
 );
 
 INSERT INTO question(
@@ -28,29 +28,29 @@ SELECT * FROM question;
 INSERT INTO answerOption(
     answerOption_id, answerOption, question_id)
 VALUES
-    (1.1, 'вариант ответа A1Q1', 1),
-    (1.2, 'вариант ответа A2Q1', 1),
-    (1.3, 'вариант ответа A3Q1', 1),
-    (1.4, 'вариант ответа A4Q1', 1),
-    (2.1, 'вариант ответа A1Q2', 2),
-    (2.2, 'вариант ответа A2Q2', 2),
-    (2.3, 'вариант ответа A3Q2', 2),
-    (3.1, 'вариант ответа A1Q3', 3),
-    (3.2, 'вариант ответа A2Q3', 3),
-    (3.3, 'вариант ответа A3Q3', 3),
-    (3.4, 'вариант ответа A4Q3', 3),
-    (3.5, 'вариант ответа A5Q3', 3);
+    ('A1Q1', 'вариант ответа A1Q1', 1),
+    ('A2Q1', 'вариант ответа A2Q1', 1),
+    ('A3Q1', 'вариант ответа A3Q1', 1),
+    ('A4Q1', 'вариант ответа A4Q1', 1),
+    ('A1Q2', 'вариант ответа A1Q2', 2),
+    ('A2Q2', 'вариант ответа A2Q2', 2),
+    ('A3Q2', 'вариант ответа A3Q2', 2),
+    ('A1Q3', 'вариант ответа A1Q3', 3),
+    ('A2Q3', 'вариант ответа A2Q3', 3),
+    ('A3Q3', 'вариант ответа A3Q3', 3),
+    ('A4Q3', 'вариант ответа A4Q3', 3),
+    ('A5Q3', 'вариант ответа A5Q3', 3);
 
 SELECT * FROM answerOption;
 
 SELECT question.*, answerOption.*
-    LEFT FROM question JOIN answerOption ON question.question_id = answerOption.question_id;
+    FROM question JOIN answerOption ON question.question_id = answerOption.question_id;
 
 INSERT INTO rightAnswer(question_id, answerOption_id)
 Values
-    (1,1.1),
-    (2,2.3),
-    (3,3.5);
+    (1,'A1Q1'),
+    (2,'A3Q2'),
+    (3,'A5Q3');
 
 SELECT * FROM rightAnswer;
 
@@ -67,3 +67,5 @@ DROP TABLE
     rightanswer,
     answeroption
     CASCADE;
+
+DROP DATABASE Homework_sql;
