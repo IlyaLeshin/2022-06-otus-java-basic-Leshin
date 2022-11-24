@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>ДЗ: Html-страница с JavaScript-ом</title>
+
+    <style>
+        h2 {
+            color: black;
+        }
+
+        .ListTable {
+            border: 1px solid #87CEEB;
+            width: 640px;
+            border-collapse: collapse;
+
+        }
+
+        #StudentListTable tr td {
+            border: 1px solid #87CEEB;
+            padding: 5px;
+        }
+
+        .TableColumnName {
+            width: 300px;
+        }
+
+        .TableColumnGender {
+            width: 120px;
+        }
+
+        .TableColumnBirthDay {
+            width: 150px;
+        }
+
+        .TableColumnAge {
+            width: 70px;
+        }
+
+        label {
+            width: 200px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .InputForm {
+            border: 1px solid #87CEEB;
+            width: 620px;
+            margin-bottom: 50px;
+            padding: 10px;
+        }
+
+        select {
+            width: 240px;
+        }
+
+        input {
+            width: 240px;
+        }
+
+    </style>
+
+    <script>
+
+        function addStudent() {
+            const studentListTable = document.getElementById("StudentListTable");
+            const tableRow = document.createElement("tr");
+            const studentName = document.getElementById("studentName");
+            const studentGender = document.getElementById("studentGender");
+            const studentBirthDate = document.getElementById("studentBirthDate");
+
+            tableRow.innerHTML = "<td>" + studentName.value + "</td> <td>" + studentGender.value + "</td> <td>" + studentBirthDate.value + "</td> <td>" + "" + "</td>";
+            studentListTable.appendChild(tableRow);
+            studentsAge()
+
+        }
+
+        function studentsAge() {
+            let table = document.getElementById('StudentListTable');
+            let tempArrayAge = [];
+            let middleAge;
+            for (let i = 1; i < table.rows.length - 2; i++) {
+                tempArrayAge.push(Math.round((new Date() - new Date(table.rows.item(i).cells.item(2).innerHTML)) / 1000 / 60 / 60 / 24 / 365));
+                table.rows.item(i).cells.item(3).innerHTML = tempArrayAge[i - 1].toString();
+            }
+
+            middleAge = Math.trunc(tempArrayAge.reduce((previousValue, currentValue) => previousValue + currentValue, 0) / (tempArrayAge.length));
+            document.getElementById("studentsMiddleАge").innerHTML = middleAge.toString();
+
+        }
+
+    </script>
+
+
+</head>
+<body onload="studentsAge()">
+<h2>Форма добавления информации о студенте</h2>
+<div class="InputForm">
+    <form>
+        <div>
+            <label for="studentName">Имя студента:</label>
+
+            <input id="studentName" name="studentName" type="text">
+        </div>
+
+        <div>
+            <label for="studentBirthDate">Дата Рождения:</label>
+            <input id="studentBirthDate" name="studentBirthDate" type="date" value="2000-01-01">
+        </div>
+
+        <div>
+            <label for="studentGender"> Пол:</label>
+            <select id="studentGender" name="studentGender">
+                <option value="Мужчина" selected>Мужчина</option>
+                <option value="Женщина">Женщина</option>
+            </select>
+
+        </div>
+        <div>
+            <input onclick=addStudent() type="button" value="Добавить">
+        </div>
+    </form>
+</div>
+
+<h2>Таблица студентов</h2>
+<table class="ListTable" id="StudentListTable">
+    <thead>
+    <tr>
+        <td class="TableColumnName">Имя студента</td>
+        <td class="TableColumnGender">Пол</td>
+        <td class="TableColumnBirthDay">Дата рождения</td>
+        <td class="TableColumnAge">Возраст</td>
+    </tr>
+
+    <tbody id="StudentList">
+    <tr>
+        <td>Гарри Поттер</td>
+        <td>Мужчина</td>
+        <td>1980-07-31</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Гермиона Грейнджер</td>
+        <td>Женщина</td>
+        <td>1979-09-19</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Рон Уизли</td>
+        <td>Мужчина</td>
+        <td>1980-05-01</td>
+        <td>0</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="4">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="3">Средний возраст студентов</td>
+        <td>
+            <div id="studentsMiddleАge">
+
+            </div>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+<script>
+
+</script>
+</body>
+
+</html>
