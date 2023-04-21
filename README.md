@@ -1,4 +1,4 @@
-# 2022-12-otus-java-Leshin
+# 2022-06-otus-java-basic-Leshin
 
 Лёшин Илья  
 Курс Java Basic  
